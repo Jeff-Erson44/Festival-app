@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
     <h1>Festival</h1>
-    <p>Test final</p>
+    <p>Test final : TS </p>
     </>
   )
 }
