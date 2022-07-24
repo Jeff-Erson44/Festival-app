@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
-import * as gtag from '../lib/gtatg'
+import * as gtag from '../lib/gtag'
 import { GTM_ID } from '../lib/gtm'
 
 function MyApp({ Component, pageProps }) {
