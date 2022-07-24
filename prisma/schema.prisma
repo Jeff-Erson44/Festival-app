@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+    previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  referentialIntegrity = "prisma"
+  
+}
+
+model User{
+  id          Int @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  username    String @unique
+  email       String @unique
+  password    String
+  token       String?
+  bio         String
+  birthdate   DateTime
+  posts       Post[]
+  comments    Comment[]
+  likedposts  LikedPost[]
+  //followedBy Follows[] @relation("following")
+  //following  Follows[] @relation("follower")
+}
+
+model Post{
+  id          Int @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  content     String
+  description String?
+  nameFestival String?
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+  comments    Comment[]
+  likesposts  LikedPost[]
+}
+
+model Comment{
+  id          Int @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  content     String
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+  post   Post @relation(fields: [postId], references: [id])
+  postId Int
+  
+}
+
+model LikedPost{
+  id          Int @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  like        Boolean
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+  post   Post @relation(fields: [postId], references: [id])
+  postId Int
+}
+
+model Follows{
+  id          Int @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  //follower    User @relation("follower", fields: [followerId], references: [id])
+  //followerId  Int
+  //following   User @relation("following", fields: [followingId], references: [id])
+  //followingId Int
+}
