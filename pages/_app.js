@@ -4,6 +4,8 @@ import Layout from '../components/Layout'
 import * as gtag from '../lib/gtag'
 import { GTM_ID } from '../lib/gtm'
 
+
+
 function MyApp({ Component, pageProps }) {
 
   const router = useRouter()
@@ -30,10 +32,10 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
-      
-      <Layout>
+        <Layout>
           <Component {...pageProps} />
         </Layout>
+
     </>
   )
 }

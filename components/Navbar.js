@@ -1,14 +1,27 @@
-import Link from "next/link"
-
+import Link from 'next/link'
 
 export default function Navbar() {
-    <nav>
-        <ul>
-            <li>
-                <Link href="/">
-                    <a>Home</a>
-                </Link>
-            </li>
-        </ul>
-    </nav>
+
+    return (
+        <>
+            <nav>
+                <ul>
+                    <li>
+                        <Link href="/">Accueil</Link>
+                    </li>
+                    <li>
+                        <Link href="/">Se connecter</Link>
+                    </li>
+                    <li>
+                        <Link href="/">Créer un compte</Link>
+                    </li>
+                </ul>
+            </nav>
+        </>
+    )
 }
+
+  
+
+  
+  
