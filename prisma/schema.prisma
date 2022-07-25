@@ -22,8 +22,7 @@ model User{
   email       String @unique
   password    String
   token       String?
-  bio         String
-  birthdate   DateTime
+  bio         String?
   posts       Post[]
   comments    Comment[]
   likedposts  LikedPost[]
