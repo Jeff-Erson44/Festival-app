@@ -3,9 +3,10 @@ import Image from 'next/image'
 
 
 export default function Home() {
-  return (<>
+  return (
+  <>
     <Head>
-      <title>Festiv&paos;app JK</title>
+      <title>Festiv'app JK</title>
     </Head>
     
     <h1>Festival</h1>

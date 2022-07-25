@@ -31,11 +31,9 @@ function MyApp({ Component, pageProps }) {
         }}
       />
       
-
-        <Layout>
+      <Layout>
           <Component {...pageProps} />
         </Layout>
-
     </>
   )
 }
