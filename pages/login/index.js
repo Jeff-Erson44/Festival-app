@@ -3,14 +3,19 @@ import { useState } from "react";
 
 export default function Index() {
 
-    // Etat des donnes du formulaire 
+    // Etat des donnes du formulaire inscription 
     const [inputUser, setInputUser] = useState({
         id: "",
         username: "",
         email: "",
         password: "",
     })
-
+    // Etat des donnes du formulaire inscription 
+    const [inputedUser, setInputedUser] = useState({
+        username: "",
+        password: "",
+    })
+    // Etat formulaire d'inscription
     const handleSignUp = async (e) => {
         e.preventDefault();
         // On récupère toutes les infos utisateurs
@@ -34,10 +39,29 @@ export default function Index() {
         }
     }
 
+    // Etat formulaire de connexion
+    const handleSignIn = async (e) => {
+        e.preventDefault();
+        // On récupère toutes les infos utisateurs
+        const res = await fetch('/api/auth/signin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: inputedUser.username,
+                password: inputedUser.password,
+            }),
+        });
+
+        const data = await res.json();
+        console.log(data);
+    }
+
     return (
         <>
             <Head>
-                <title>Sign Up</title>
+                <title>Sign Up - Sign in</title>
             </Head>
 
             <h2>Créer un compte</h2>
@@ -49,6 +73,15 @@ export default function Index() {
                 <label> Mot de passe : </label>
                 <input type="password" name="password" value={inputUser.password || ''} onChange={(e) => setInputUser({ ...inputUser, password: e.target.value })} />
                 <button type="submit">Créer</button>
+            </form>
+
+            <h2>Connexion</h2>
+            <form onSubmit={handleSignIn}>
+                <label> Nom d'utilisateur : </label>
+                <input type="text" name="username" value={inputedUser.username || ''} onChange={(e) => setInputedUser({ ...inputUser, username: e.target.value })} />
+                <label> Mot de passe : </label>
+                <input type="password" name="password" value={inputedUser.password || ''} onChange={(e) => setInputedUser({ ...inputedUser, password: e.target.value })} />
+                <button type="submit">Connexion</button>
             </form>
         </>
     )
