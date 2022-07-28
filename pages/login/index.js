@@ -1,7 +1,18 @@
 import Head from "next/head"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
 
 export default function Index() {
+    const router = useRouter()
+    // si l'utilisateur est déjà connecté, on le redirige vers la page d'accueil
+    useEffect(() => {
+        if(cookies.user){
+            router.push('/')
+        }
+     });
+    // Etat du cookie
+    const [cookies, setCookie] = useCookies(['user']);
 
     // Etat des donnes du formulaire inscription 
     const [inputUser, setInputUser] = useState({
@@ -15,7 +26,7 @@ export default function Index() {
         username: "",
         password: "",
     })
-    //Etat du formulaire affiché
+    //Etat du formulaire à afficher
     const [form, setForm] = useState("signup");
 
     // Etat formulaire d'inscription
@@ -38,7 +49,12 @@ export default function Index() {
                 }),
             });
             const data = await res.json();
-            console.log(data);
+            if(res.ok){
+                router.reload('/')
+            }else{
+                console.log('error');
+            }
+          
         }
     }
     // Etat formulaire de connexion
@@ -57,8 +73,18 @@ export default function Index() {
         });
 
         const data = await res.json();
-        console.log(data);
+        if(res.ok){
+            setCookie("user", JSON.stringify(data), {
+                path: '/',
+                maxAge: 1296000, // Expires after 1hr
+                sameSite: true,
+            })
+            router.push('/')
+        }else{
+            console.log('error');
+        }
     }
+
 
     return (
         <>
