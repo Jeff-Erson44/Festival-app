@@ -49,11 +49,16 @@ export default function Index() {
                 }),
             });
             const data = await res.json();
-            if(res.ok){
-                router.reload('/')
-            }else{
-                console.log('error');
-            }
+                if(res.ok){
+                    setCookie("user", JSON.stringify(data), {
+                        path: '/',
+                        maxAge: 1296000, // Expires after 1hr
+                        sameSite: true,
+                    })
+                    router.push('/')
+                }else{
+                    console.log('error');
+                }
           
         }
     }
@@ -71,7 +76,6 @@ export default function Index() {
                 password: inputedUser.password,
             }),
         });
-
         const data = await res.json();
         if(res.ok){
             setCookie("user", JSON.stringify(data), {
