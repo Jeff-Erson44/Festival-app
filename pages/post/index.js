@@ -14,14 +14,13 @@ export default function Post()  {
     content:"",
     nameFestival:"",
   })
-
-  console.log(inputedData)
-
   const fetchData = async () => {
     const response = await fetch(`../api/post/getPost`);
     const json = await response.json()
     setDatas(json)
-  }
+    }
+
+  console.log(inputedData)
 
   const handleCreatePost = async (e) => {
     e.preventDefault()
@@ -43,23 +42,9 @@ export default function Post()  {
     fetchData()
   }
 
-    const handleDeleteData = async (id) => {
-        console.log(id)
-    const response = await fetch(`../api/post/deletePost`, {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id })
-    })
-    const json = await response.json()
-    console.log(json)
-    fetchData()
-    }
-
     useEffect(() => {
-    fetchData()
-    }, [])
+      fetchData()
+      }, [])
 
   return (
     <>
@@ -89,22 +74,9 @@ export default function Post()  {
                     placeholder='Nom du Festival' 
                     onChange={(e)=> setInputedData({...inputedData, nameFestival: e.target.value})}
                 />
-                <button type="submit">Submit</button>
+                <button type="submit">Publier</button>
             </form>
         </div>
-      <div>
-        {Datas.map(({id, description, content, nameFestival}) =>{
-          return(
-            <div key={id}>
-              <h3>{description}</h3>
-              <p>{content}</p>
-              <p>{nameFestival}</p>
-              <button onClick={() => handleDeleteData(id)}>Delete data</button>
-            </div>
-          )
-        })}
-      </div>
-
     </>)
     
         

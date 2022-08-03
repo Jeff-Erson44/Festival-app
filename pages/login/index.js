@@ -114,6 +114,7 @@ export default function Index() {
                     <input type="password" name="password" value={inputUser.password || ''} onChange={(e) => setInputUser({ ...inputUser, password: e.target.value })} />
                     <button type="submit">Créer</button>
                 </form>
+                <h3>Vouas avez déja un compte ? <span onClick={() => setForm('signin')} > Connectez-vous ici </span></h3>
                 </>
                 )}
             {form === 'signin' && (
@@ -126,6 +127,7 @@ export default function Index() {
                     <input type="password" name="password" value={inputedUser.password || ''} onChange={(e) => setInputedUser({ ...inputedUser, password: e.target.value })} />
                     <button type="submit">Connexion</button>
                 </form>
+                <h3>Vouas n'avez pas de compte ? <span onClick={() => setForm('signup')} > Inscrivez-vous ici </span></h3>
                 </>
             )}   
     </>)

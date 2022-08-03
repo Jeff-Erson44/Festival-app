@@ -30,7 +30,9 @@ export default async function handler(
                 res.status(200).json({
                     username : passwordUser.username,
                     email : passwordUser.email,
-                    id: passwordUser.id
+                    id: passwordUser.id,
+                    createdAt: passwordUser.createdAt,
+                    
                 })
                 await prisma.$disconnect()
             }

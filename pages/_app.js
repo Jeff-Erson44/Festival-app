@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 import * as gtag from '../lib/gtag'
 import { GTM_ID } from '../lib/gtm'
 import { CookiesProvider } from 'react-cookie'
+import globals from '../styles/globals.css'
 
 
 
