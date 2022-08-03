@@ -6,6 +6,8 @@ const prisma = new PrismaClient();
 export default async function handler(
     req, res
 ){
+
+
     if(req.method === 'POST'){
         const { username,  password } = req.body;
         if(!username ||  !password){
@@ -28,6 +30,7 @@ export default async function handler(
                 res.status(200).json({
                     username : passwordUser.username,
                     email : passwordUser.email,
+                    id: passwordUser.id
                 })
                 await prisma.$disconnect()
             }

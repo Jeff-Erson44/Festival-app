@@ -37,10 +37,10 @@ model Post{
   content     String
   description String?
   nameFestival String?
-  user   User @relation(fields: [userId], references: [id])
-  userId Int
+  user   User? @relation(fields: [userId], references: [id]) 
+  userId      Int 
   comments    Comment[]
-  likesposts  LikedPost[]
+  likesposts  LikedPost[] 
 }
 
 model Comment{
@@ -48,7 +48,7 @@ model Comment{
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   content     String
-  user   User @relation(fields: [userId], references: [id])
+  user   User? @relation(fields: [userId], references: [id])
   userId Int
   post   Post @relation(fields: [postId], references: [id])
   postId Int
@@ -60,7 +60,7 @@ model LikedPost{
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   like        Boolean
-  user   User @relation(fields: [userId], references: [id])
+  user   User? @relation(fields: [userId], references: [id])
   userId Int
   post   Post @relation(fields: [postId], references: [id])
   postId Int

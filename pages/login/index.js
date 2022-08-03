@@ -104,6 +104,7 @@ export default function Index() {
             {form === 'signup' && (
                 <>
                 <h2>Créer un compte</h2>
+
                 <form onSubmit={handleSignUp}>
                     <label> Nom d'utilisateur : </label>
                     <input type="text" name="username" value={inputUser.username || ''} onChange={(e) => setInputUser({ ...inputUser, username: e.target.value })} />

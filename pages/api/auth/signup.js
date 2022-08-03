@@ -1,5 +1,6 @@
 import {  PrismaClient } from "@prisma/client";
 import { hash } from "bcryptjs";
+import { useCookies } from "react-cookie";
 
 export default async function( req, res ) {
     // On accepte seulement les requêtes POST
@@ -12,7 +13,6 @@ export default async function( req, res ) {
             res.status( 400 ).send( "Données manquantes" );
             return;
         }
-    
     // On vérifie que l'utilisateur n'existe pas déjà et que son email n'est pas déjà utilisé
     const user = await Prisma.user.findUnique({
         where: {
@@ -20,12 +20,10 @@ export default async function( req, res ) {
         }
     })
     // On hash le mot de passe
-
     if (user){
         res.status( 500 ).send( "Utilisateur déjà existant" );
         return;
     }
-
     const status  = await Prisma.user.create({
         data: {
             username,
@@ -34,6 +32,7 @@ export default async function( req, res ) {
         }
     })
     await Prisma.$disconnect();
+    
     res.status( 200 ).json({ message: 'Compte créé' });
     }
 
