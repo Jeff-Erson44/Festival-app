@@ -14,7 +14,7 @@ export default function Home() {
       <h1>Festival</h1>
       <p>Test final : TS </p>
       <div>
-        <p>{cookies.user.username}</p>
+        <p>{cookies?.user?.username}</p>
       </div>
 
   
