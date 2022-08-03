@@ -32,6 +32,7 @@ export default function Navbar() {
     }
 
     return (
+        <>
         <NavbarStyle>
             <nav>
                 <ul>
@@ -49,5 +50,5 @@ export default function Navbar() {
                 </ul>
             </nav>
         </NavbarStyle>
-    )
+        </>)
 }

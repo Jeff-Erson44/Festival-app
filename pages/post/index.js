@@ -49,7 +49,7 @@ export default function Post()  {
   return (
     <>
         <Head>
-            <title>Festiva&apos;app</title>
+            <title>Festiva&apos;app JK - Nouveau post </title>
         </Head>
 
         <h1>Listing Post</h1>

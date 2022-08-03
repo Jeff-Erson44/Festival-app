@@ -34,6 +34,7 @@ export default class MyDocument extends Document {
     const language = "fr-fr";
 
     return (
+      <>
 
       <Html lang={language}>
 
@@ -82,6 +83,6 @@ export default class MyDocument extends Document {
 
         </body>
       </Html>
-    );
+      </>);
   }
 }
