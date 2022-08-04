@@ -1,11 +1,12 @@
-
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { useCookies } from 'react-cookie'
+import { useRouter } from 'next/router'
 
 
 
 export default function Post()  {
+  const router = useRouter()
   const [cookies, setcookies] = useCookies(['user'])
   const [Datas, setDatas] = useState([])
   const [inputedData, setInputedData] = useState({
@@ -40,6 +41,8 @@ export default function Post()  {
     console.log(json)
     setInputedData({ id:"", description:"", content:"", nameFestival:"" })
     fetchData()
+
+    router.push("/")
   }
 
     useEffect(() => {
