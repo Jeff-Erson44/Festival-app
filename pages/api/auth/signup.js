@@ -1,6 +1,6 @@
 import {  PrismaClient } from "@prisma/client";
 import { hash } from "bcryptjs";
-import { useCookies } from "react-cookie";
+
 
 export default async function( req, res ) {
     // On accepte seulement les requêtes POST

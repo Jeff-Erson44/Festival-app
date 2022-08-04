@@ -44,6 +44,10 @@ export default function Navbar() {
                         ("") 
                     }
                     {cookies.user ? 
+                        (<li><Link href="/profil/${cookies.user.username}">Mon profil</Link></li>) : 
+                        ("") 
+                    }
+                    {cookies.user ? 
                         (<button className="deco" onClick={(e) => logout(e)} >Déconnexion</button>) : 
                         (<button> <Link href="/login">S'identifier</Link></button>)
                     }

@@ -34,6 +34,7 @@ export default async function handler(
                     createdAt : passwordUser.createdAt,
                 })
                 await prisma.$disconnect()
+                console.log('Vous êtes déconnecté');
             }
         }
     }
