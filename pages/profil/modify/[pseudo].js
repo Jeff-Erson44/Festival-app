@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Head from "next/head"
 
 
-export default function Modify({profil}){
+export default function Modify({}){
 
     const router = useRouter()
     const [cookies, setcookies] = useCookies(["user"])
