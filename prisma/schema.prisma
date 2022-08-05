@@ -23,6 +23,7 @@ model User{
   password    String
   token       String?
   bio         String?
+  image       String?
   posts       Post[]
   comments    Comment[]
   likedposts  LikedPost[]

@@ -52,13 +52,13 @@ const handleDeleteData = async (id) => {
 
 
       <div>
-        {Datas.map(({id, description, content, nameFestival, userId}) =>{
+        {Datas.map(({id, description, content, nameFestival, userId, }) =>{
           return(
             <div key={id}>
               <h3>{description}</h3>
               <p>{content}</p>
               <p>{nameFestival}</p>
-              <p>ecrit par : </p>
+              <p>ecrit par : {userId} </p>
               <div>
                 {cookies?.user?.id === userId ? <button onClick={() => handleDeleteData(id)}>Supprimer</button> : null}
               </div>              

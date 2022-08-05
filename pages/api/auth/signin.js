@@ -32,6 +32,7 @@ export default async function handler(
                     email : passwordUser.email,
                     id : passwordUser.id,
                     createdAt : passwordUser.createdAt,
+                    image : passwordUser.image,
                     bio : passwordUser.bio,
                 })
                 await prisma.$disconnect()
