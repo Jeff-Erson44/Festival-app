@@ -18,7 +18,6 @@ const NavbarStyle = styled.div`
             }
         }
     }    
-
 `
 
 export default function Navbar() {

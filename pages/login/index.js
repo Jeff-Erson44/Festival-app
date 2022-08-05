@@ -114,7 +114,7 @@ export default function Index() {
                     <input type="password" name="password" value={inputUser.password || ''} onChange={(e) => setInputUser({ ...inputUser, password: e.target.value })} />
                     <button type="submit">Créer</button>
                 </form>
-                <h3>Vouas avez déja un compte ? <span onClick={() => setForm('signin')} > Connectez-vous ici </span></h3>
+                <h3>Vous avez déja un compte ? <span onClick={() => setForm('signin')} > Connectez-vous ici </span></h3>
                 </>
                 )}
             {form === 'signin' && (
