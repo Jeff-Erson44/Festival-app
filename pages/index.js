@@ -3,6 +3,8 @@ import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
 import { parseCookies } from '../helpers'
 import { prisma } from '@prisma/client';
+import toast, { Toaster } from 'react-hot-toast';
+import Image from 'next/image';
 
 export default function Home() {
   const [cookies, setcookies] = useCookies(["user"])
@@ -23,7 +25,17 @@ const handleDeleteData = async (id) => {
   const json = await response.json()
   console.log(json)
   fetchData()
-}
+
+  // toast de suppresion de post
+  toast('Votre post a bien été supprimé',
+    {
+      icon: '🗑️',
+      style: {
+        background: '#234D43',
+        color: 'white',
+      },  
+    });
+  }
 
   const [Datas, setDatas] = useState([])
   const fetchData = async () => {
@@ -38,7 +50,10 @@ const handleDeleteData = async (id) => {
 
   return (
     <>
-
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
       <Head>
         <title>Festiv'app JK</title>
       </Head>
@@ -56,7 +71,13 @@ const handleDeleteData = async (id) => {
           return(
             <div key={id}>
               <h3>{description}</h3>
-              <p>{content}</p>
+              {content &&
+              <Image
+                src={content}
+                alt={description}
+                width={200}
+                height={200}
+              />}
               <p>{nameFestival}</p>
               <p>ecrit par : {userId} </p>
               <div>

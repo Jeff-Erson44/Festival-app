@@ -31,6 +31,7 @@ export default async function( req, res ) {
             password: await hash( password, 8 ),
         }
     })
+    // afficher un toast de succès
     await Prisma.$disconnect();
     
     res.status( 200 ).json({ message: 'Compte créé' });

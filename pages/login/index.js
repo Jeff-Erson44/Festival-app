@@ -2,6 +2,7 @@ import Head from "next/head"
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Index() {
     const router = useRouter()
@@ -55,11 +56,29 @@ export default function Index() {
                         maxAge: 1296000, // Expires after 1hr
                         sameSite: true,
                     })
+                    toast('Compte créé !!',
+                    {
+                        icon: '🎉',
+                        style: {
+                        background: '#234D43',
+                        color: 'white',
+                        },
+                    })
+                    // mettre un delais avant de recharger la page pour que le toast soit visible
+                    setTimeout(() => {
                     router.push('/')
+                    } , 2000)
                 }else{
                     console.log('error');
+                    toast('Oups !',
+                    {
+                        icon: '❌',
+                        style: {
+                        background: '#234D43',
+                        color: 'white',
+                        },
+                    })
                 }
-          
         }
     }
     // Etat formulaire de connexion
@@ -83,7 +102,18 @@ export default function Index() {
                 maxAge: 1296000, // Expires after 1hr
                 sameSite: true,
             })
+            toast('Connexion réussie',
+                    {
+                        icon: '🚀',
+                        style: {
+                        background: '#234D43',
+                        color: 'white',
+                        },
+                    })
+                    // mettre un delais avant de recharger la page pour que le toast soit visible
+            setTimeout(() => {
             router.push('/')
+            } , 3000)
         }else{
             console.log('error');
         }
@@ -92,6 +122,7 @@ export default function Index() {
 
     return (
         <>
+            <Toaster />
             <Head>
                 <title>Festiv&apos;app JK - Inscription/Connexion</title>
             </Head>

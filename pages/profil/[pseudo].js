@@ -50,7 +50,8 @@ export default function Profil() {
             <p>{user?.email}</p>
             <p>{user?.bio ? user?.bio : "Aucune bio"}</p>
             <p>{user?.createdAt}</p>
-
+            <p>{user?.birthdate ? user.birthdate : "1 janvier 1900 "}</p>
+            <p>{user?.location ? user.location : "Festiv'app City"}</p>
             {user?.image && <img src={user?.image} alt="profil" />}
 
 

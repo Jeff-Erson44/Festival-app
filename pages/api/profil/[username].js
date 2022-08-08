@@ -11,9 +11,7 @@ export const config = {
 
 export default async function handler (req, res) {
 
-
     const imageGet = await getImage(req);
-
 
     const user = await req.query.username;
     const userWho = await prisma.user.findFirst({

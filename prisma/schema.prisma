@@ -24,6 +24,8 @@ model User{
   token       String?
   bio         String?
   image       String?
+  localisation String?
+  birthdate   DateTime?
   posts       Post[]
   comments    Comment[]
   likedposts  LikedPost[]
