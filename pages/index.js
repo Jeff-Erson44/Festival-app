@@ -15,8 +15,7 @@ export default function Home({ posts }) {
       setUser(cookies.user)
   } , [cookies.user])
 
-const handleDeleteData = async (id) => {
-
+/*const handleDeleteData = async (id) => {
   const response = await fetch(`../api/post/deletePost`, {
     method: "POST",
     headers: {
@@ -26,8 +25,6 @@ const handleDeleteData = async (id) => {
   })
   const json = await response.json()
   console.log(json)
-
-
   // toast de suppresion de post
   toast('Votre post a bien été supprimé',
     {
@@ -38,17 +35,17 @@ const handleDeleteData = async (id) => {
       },  
     });
     fetchData()
-  }
+  }*/
 
   const fetchData = async () => {
   const response = await fetch(`../api/post/getPost`);
   const json = await response.json()
-  setDatas(json)
+  setDatas(posts)
   }
 
   useEffect(() => {
     fetchData()
-  }, [posts])
+  }, [])
 
   return (
     <>
@@ -88,7 +85,7 @@ const handleDeleteData = async (id) => {
     </>)
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   const prisma = new PrismaClient();
   const posts = await prisma.post.findMany({
     select: {
