@@ -89,14 +89,16 @@ const handleDeleteData = async (id) => {
           </p>
 
           <h2> Commentaire </h2>
-          <p>
+   
             {post.comments.map((comment) => (
               <div key={comment.id}>
                 <p>{post.user?.username}</p>
                 <p>{comment.content}</p> 
               </div>
+
+
             ))}
-          </p>
+
 
 
           
