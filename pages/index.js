@@ -1,3 +1,4 @@
+            
 import Head from 'next/head';
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
@@ -64,10 +65,33 @@ const handleDeleteData = async (id) => {
 
       <h2>Bonjour {user?.username}</h2>
 
+      {posts?.map((post) => (
+        <div key={post?.id}>
+          <h2>{post?.description}</h2>
+          <h3>{post?.nameFestival}</h3>
+          <p>{post?.user.username}</p>
+         
+            <Image
+              src={post?.content}
+              width={400}
+              height={400}
+              alt={post?.description} 
+            />
+          <p>
+            <Link href={`/comment/${post?.id}`}>Commenter</Link>
+          </p>
+
+          <h2> Commentaire </h2>
+
+        </div>
+      ))
+      }
+
           
     </>)
 }
-export async function getStaticProps() {
+
+export async function getServerSideProps() {
   const prisma = new PrismaClient();
   const posts = await prisma.post.findMany({
     select: {
@@ -98,4 +122,3 @@ export async function getStaticProps() {
     }
   }
 }
-
