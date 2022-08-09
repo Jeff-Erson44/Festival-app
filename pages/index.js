@@ -70,11 +70,7 @@ const handleDeleteData = async (id) => {
           <h2>{post.description}</h2>
           <h3>{post.nameFestival}</h3>
           <p>{post.user.username}</p>
-          <Image
-          src={post.user.image? post.user.image : '/../public/default-pdp.png'}
-          width={50}
-          height={50}
-          />
+         
             <Image
               src={post.content}
               width={400}
