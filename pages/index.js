@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
-import { parseCookies } from '../helpers'
 import { PrismaClient } from "@prisma/client";
 import toast, { Toaster } from 'react-hot-toast';
 import Image from 'next/image';
@@ -83,14 +82,6 @@ const handleDeleteData = async (id) => {
 
           <h2> Commentaire </h2>
 
-
-   
-            
-
-
-
-          
-        
         </div>
       ))
       }
