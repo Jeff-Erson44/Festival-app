@@ -48,7 +48,7 @@ const handleDeleteData = async (id) => {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [posts])
 
   return (
     <>
@@ -77,9 +77,6 @@ const handleDeleteData = async (id) => {
               height={400}
               alt={post?.description} 
             />
-          <p>
-            <Link href={`/comment/${post?.id}`}>Commenter</Link>
-          </p>
 
           <h2> Commentaire </h2>
 
