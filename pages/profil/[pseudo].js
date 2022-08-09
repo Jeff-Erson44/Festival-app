@@ -35,15 +35,13 @@ export default function Profil(users) {
         }
         
     }
-
     const handleImg = async (e) => {
         setImg(e.target.files[0])
     }
-
     return(
         <>
             <Head>
-                <title>Festiv&apos;app - JK {user?.username}'s profil</title>
+                <title>Festiv&apos;app - JK profil</title>
             </Head>
             <h1>Profil</h1>
 
