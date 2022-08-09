@@ -75,20 +75,24 @@ const handleDeleteData = async (id) => {
           width={50}
           height={50}
           />
-          <Link href={`post/${post.id}`}>
             <Image
               src={post.content}
               width={400}
               height={400}
               alt={post.description} 
             />
-          </Link>
-
           <p>
             <Link href={`/comment/${post.id}`}>Commenter</Link>
           </p>
 
           <h2> Commentaire </h2>
+
+          {post.comments.map((comment) => (
+              <div key={comment.id}>
+                <p>{post.user?.username}</p>
+                <p>{comment.content}</p> 
+              </div>
+            ))}
    
             
 
