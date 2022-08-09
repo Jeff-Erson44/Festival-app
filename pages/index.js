@@ -64,67 +64,7 @@ const handleDeleteData = async (id) => {
 
       <h2>Bonjour {user?.username}</h2>
 
-      {posts?.map((post) => (
-        <div key={post.id}>
-          <h2>{post.description}</h2>
-          <h3>{post.nameFestival}</h3>
-          <p>{post.user.username}</p>
-         
-            <Image
-              src={post.content}
-              width={400}
-              height={400}
-              alt={post.description} 
-            />
-          <p>
-            <Link href={`/comment/${post.id}`}>Commenter</Link>
-          </p>
-
-          <h2> Commentaire </h2>
-
-          {post.comments.map((comment) => (
-              <div key={comment.id}>
-                <p>{post.user?.username}</p>
-                <p>{comment.content}</p> 
-              </div>
-            ))}
-
-        </div>
-      ))
-      }
-
           
     </>)
 }
 
-export async function getServerSideProps() {
-  const prisma = new PrismaClient();
-  const posts = await prisma.post.findMany({
-    select: {
-      id: true,
-      createdAt: true,
-      content: true,
-      description: true,
-      nameFestival: true,
-      user: {
-        select: {
-          id: true,
-          username: true,
-          image: true,
-        }
-      },
-      comments: {
-        select: {
-          id: true,
-          content: true,
-          createdAt: true,
-        }
-      }
-    }  
-  });console.log(posts)
-  return {
-    props: {
-      posts
-    }
-  }
-}
