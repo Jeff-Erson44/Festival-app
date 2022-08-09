@@ -1,10 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-import { getImage } from '../../../utils/formidable';
 import { uploadImage } from '../../../utils/cloudinary';
-import { IncomingForm } from 'formidable';
+
 
 const prisma = new PrismaClient();
-
 
 export default async function handler(req, res){
 

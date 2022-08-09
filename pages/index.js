@@ -2,11 +2,13 @@ import Head from 'next/head';
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
 import { parseCookies } from '../helpers'
-import { prisma } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 import toast, { Toaster } from 'react-hot-toast';
 import Image from 'next/image';
+import Link from 'next/link';
 
-export default function Home() {
+export default function Home({ posts }) {
+  const [Datas, setDatas] = useState([])
   const [cookies, setcookies] = useCookies(["user"])
   const [user, setUser] = useState()
   useEffect(() => {
@@ -24,7 +26,7 @@ const handleDeleteData = async (id) => {
   })
   const json = await response.json()
   console.log(json)
-  fetchData()
+
 
   // toast de suppresion de post
   toast('Votre post a bien été supprimé',
@@ -35,9 +37,9 @@ const handleDeleteData = async (id) => {
         color: 'white',
       },  
     });
+    fetchData()
   }
 
-  const [Datas, setDatas] = useState([])
   const fetchData = async () => {
   const response = await fetch(`../api/post/getPost`);
   const json = await response.json()
@@ -63,31 +65,78 @@ const handleDeleteData = async (id) => {
 
       <h2>Bonjour {user?.username}</h2>
 
+      {posts?.map((post) => (
+        <div key={post.id}>
+          <h2>{post.description}</h2>
+          <h3>{post.nameFestival}</h3>
+          <p>{post.user.username}</p>
+          <Image
+          src={post.user.image? post.user.image : '/../public/default-pdp.png'}
+          width={50}
+          height={50}
+          />
+          <Link href={`post/${post.id}`}>
+            <Image
+              src={post.content}
+              width={400}
+              height={400}
+              alt={post.description} 
+            />
+          </Link>
+
+          <p>
+            <Link href={`/comment/${post.id}`}>Commenter</Link>
+          </p>
+
+          <h2> Commentaire </h2>
+          <p>
+            {post.comments.map((comment) => (
+              <div key={comment.id}>
+                <p>{post.user?.username}</p>
+                <p>{comment.content}</p> 
+              </div>
+            ))}
+          </p>
 
 
+          
+        
+        </div>
+      ))
+      }
 
-      <div>
-        {Datas.map(({id, description, content, nameFestival, userId, }) =>{
-          return(
-            <div key={id}>
-              <h3>{description}</h3>
-              {content &&
-              <Image
-                src={content}
-                alt={description}
-                width={200}
-                height={200}
-              />}
-              <p>{nameFestival}</p>
-              <p>ecrit par : {userId} </p>
-              <div>
-                {cookies?.user?.id === userId ? <button onClick={() => handleDeleteData(id)}>Supprimer</button> : null}
-              </div>              
-            </div>
-          )
-        })}
-      </div>  
+          
     </>)
 }
 
-
+export async function getServerSideProps() {
+  const prisma = new PrismaClient();
+  const posts = await prisma.post.findMany({
+    select: {
+      id: true,
+      createdAt: true,
+      content: true,
+      description: true,
+      nameFestival: true,
+      user: {
+        select: {
+          id: true,
+          username: true,
+          image: true,
+        }
+      },
+      comments: {
+        select: {
+          id: true,
+          content: true,
+          createdAt: true,
+        }
+      }
+    }  
+  });console.log(posts)
+  return {
+    props: {
+      posts
+    }
+  }
+}

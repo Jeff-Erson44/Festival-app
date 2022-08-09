@@ -2,10 +2,12 @@ import Head from "next/head"
 import { useCookies } from "react-cookie"
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { PrismaClient } from "@prisma/client"
+import { parseCookies } from "../../helpers"
 
 
 
-export default function Profil() {
+export default function Profil(users) {
 
     const [cookies, setcookies] = useCookies(["user"])
     const [user, setUser] = useState()
@@ -45,13 +47,12 @@ export default function Profil() {
             </Head>
             <h1>Profil</h1>
 
-
+            
             <p>{user?.username}</p>
             <p>{user?.email}</p>
             <p>{user?.bio ? user?.bio : "Aucune bio"}</p>
-            <p>{user?.createdAt}</p>
-            <p>{user?.birthdate ? user.birthdate : "1 janvier 1900 "}</p>
-            <p>{user?.location ? user.location : "Festiv'app City"}</p>
+            <p>{user?.birthdate ? user.birthdate : "Votre date de naissance "}</p>
+            <p>{user?.location ? user.location : "Votre ville"}</p>
             {user?.image && <img src={user?.image} alt="profil" />}
 
 
@@ -68,3 +69,6 @@ export default function Profil() {
         </>
     )
 }
+
+
+      
