@@ -67,4 +67,35 @@ const handleDeleteData = async (id) => {
           
     </>)
 }
+export async function getServerSideProps() {
+  const prisma = new PrismaClient();
+  const posts = await prisma.post.findMany({
+    select: {
+      id: true,
+      createdAt: true,
+      content: true,
+      description: true,
+      nameFestival: true,
+      user: {
+        select: {
+          id: true,
+          username: true,
+          image: true,
+        }
+      },
+      comments: {
+        select: {
+          id: true,
+          content: true,
+          createdAt: true,
+        }
+      }
+    }  
+  });console.log(posts)
+  return {
+    props: {
+      posts
+    }
+  }
+}
 
