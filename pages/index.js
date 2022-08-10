@@ -5,12 +5,19 @@ import { useState, useEffect } from 'react';
 import { PrismaClient } from "@prisma/client";
 import toast, { Toaster } from 'react-hot-toast';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 export default function Home({ posts }) {
+  const router = useRouter();
   const [Datas, setDatas] = useState([])
   const [cookies, setcookies] = useCookies(["user"])
   const [user, setUser] = useState()
+  const [inputedData, setInputedData] = useState({
+    content: "",
+    postId: "",
+    userId: "",
+})
   useEffect(() => {
       setUser(cookies.user)
   } , [cookies.user])
@@ -40,12 +47,49 @@ export default function Home({ posts }) {
   const fetchData = async () => {
   const response = await fetch(`../api/post/getPost`);
   const json = await response.json()
-  setDatas(posts)
+  setDatas(json)
   }
+
+  const handleCreateComment = async (e) => {
+    e.preventDefault();
+    const response = await fetch(`/api/comment/createComment`,  {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            content: inputedData.content,
+            postId: 1,
+            userId: 1,
+        }), 
+    })
+    const json = await response.json()
+    console.log(json)
+    setInputedData({ id:"", description:"", content:"" })
+    fetchDataCom()
+    // afficher toast de création de commentaire
+    toast('Votre commentaire a bien été créé',
+      { 
+        icon: '💬',
+        style: {
+          background: '#234D43',
+          color: 'white',
+        },
+      });
+      setTimeout(() => {
+        router.reload('/')
+      } , 1000)
+}
+
+  const fetchDataCom = async () => {
+    const response = await fetch(`../api/comment/getComment`);
+    const json = await response.json()
+    setDatas(json)
+    }
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, []) 
 
   return (
     <>
@@ -74,6 +118,25 @@ export default function Home({ posts }) {
               height={400}
               alt={post?.description} 
             />
+
+            {user?.id === post?.user?.id && (
+              <button onClick={() => handleDeleteData(post?.id)}>
+                Supprimer
+              </button>
+            )}
+
+          <form onSubmit={handleCreateComment}>
+            <input
+                type="text"
+                name="content"
+                placeholder="Votre commentaire"
+                value={inputedData.content || ""}
+                onChange={(e)=> setInputedData({...inputedData, content: e.target.value})}
+            />
+
+            <button type="submit">Envoyer</button>
+
+          </form>
 
           <h2> Commentaire </h2>
               {post.comments.map((comment) => (
