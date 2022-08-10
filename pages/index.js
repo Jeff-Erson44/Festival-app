@@ -10,13 +10,12 @@ import Link from 'next/link';
 
 export default function Home({ posts }) {
   const router = useRouter();
+  // on veut recuperer l'id du post que l'on commente 
   const [Datas, setDatas] = useState([])
   const [cookies, setcookies] = useCookies(["user"])
   const [user, setUser] = useState()
   const [inputedData, setInputedData] = useState({
     content: "",
-    postId: "",
-    userId: "",
 })
   useEffect(() => {
       setUser(cookies.user)
@@ -50,25 +49,20 @@ export default function Home({ posts }) {
   setDatas(json)
   }
 
-  const handleCreateComment = async (e) => {
-    e.preventDefault();
+  const handleCreateComment = async (posts) => {
     const response = await fetch(`/api/comment/createComment`,  {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            content: inputedData.content,
-            postId: 1,
-            userId: 1,
+          content: inputedData.content,
+          userId: user?.id,
+          postId: posts,
         }), 
     })
-    const json = await response.json()
-    console.log(json)
-    setInputedData({ id:"", description:"", content:"" })
-    fetchDataCom()
-    // afficher toast de création de commentaire
-    toast('Votre commentaire a bien été créé',
+    if(response.ok){
+      toast('Votre commentaire a bien été créé',
       { 
         icon: '💬',
         style: {
@@ -76,9 +70,13 @@ export default function Home({ posts }) {
           color: 'white',
         },
       });
-      setTimeout(() => {
-        router.reload('/')
-      } , 1000)
+      router.replace({pathname: router.asPath},undefined, {scroll: false})
+    }
+    const json = await response.json()
+    console.log(json)
+    setInputedData({ content:""})
+    fetchDataCom()
+    // afficher toast de création de commentaire
 }
 
   const fetchDataCom = async () => {
@@ -88,7 +86,7 @@ export default function Home({ posts }) {
     }
 
   useEffect(() => {
-    fetchData()
+    fetchData(), fetchDataCom()
   }, []) 
 
   return (
@@ -125,7 +123,7 @@ export default function Home({ posts }) {
               </button>
             )}
 
-          <form onSubmit={handleCreateComment}>
+          <form onSubmit={e =>(e.preventDefault(), handleCreateComment(post?.id))}>
             <input
                 type="text"
                 name="content"
@@ -133,9 +131,7 @@ export default function Home({ posts }) {
                 value={inputedData.content || ""}
                 onChange={(e)=> setInputedData({...inputedData, content: e.target.value})}
             />
-
-            <button type="submit">Envoyer</button>
-
+            <button>Envoyer</button>
           </form>
 
           <h2> Commentaire </h2>
@@ -156,7 +152,7 @@ export default function Home({ posts }) {
     </>)
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const prisma = new PrismaClient();
   const posts = await prisma.post.findMany({
     select: {
@@ -176,7 +172,8 @@ export async function getServerSideProps(context) {
         select: {
           id: true,
           content: true,
-          createdAt: true,
+          userId: true,
+          postId: true,
         }
       }
     }  
