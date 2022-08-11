@@ -8,6 +8,8 @@ import styled from "styled-components";
 import Image from "next/image";
 
 const SignupStyle = styled.div`
+    width: 100%;
+    overflow:hidden ;
     @media screen and (max-width: 768px) {
         .container{
             .container__image{

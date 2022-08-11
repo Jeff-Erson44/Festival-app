@@ -156,7 +156,6 @@ export default function Signin() {
                         alt="logo de l'application"
                         height={1024}
                         width={694}
-
                     />
             <div className="container__form">
                 <div className="container__form--logo">
