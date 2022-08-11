@@ -50,18 +50,19 @@ const handleDeleteData = async (id) => {
   setDatas(json)
   }
 
-  const handleCreateComment = async () => {
+  const handleCreateComment = async (posts) => {
     const response = await fetch(`/api/comment/createComment`,  {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          content: inputedData.content,
+          content: inputedData?.content,
           userId: user?.id,
-          postId: 1
+          postId: posts,
         }), 
     })
+    console.log(user?.id);
     if(response.ok){
       toast('Votre commentaire a bien été créé',
       { 
@@ -124,7 +125,12 @@ const handleDeleteData = async (id) => {
               </button>
             )}
 
-          <form onSubmit={handleCreateComment}>
+          <form onSubmit={
+            (e) => {
+              e.preventDefault(),
+              handleCreateComment(post?.id)
+              }
+            }>
             <input
                 type="text"
                 name="content"
@@ -132,11 +138,11 @@ const handleDeleteData = async (id) => {
                 value={inputedData?.content || ""}
                 onChange={(e)=> setInputedData({...inputedData, content: e.target.value})}
             />
-            <button>Envoyer</button>
+            <button type='submit'>Envoyer</button>
           </form>
 
           <h2> Commentaire </h2>
-              {post.comments.map((comment) => (
+              {post?.comments.map((comment) => (
               <div key={comment?.id}>
                 <p>{user?.username}</p>
                 <p>{comment?.content}</p> 
