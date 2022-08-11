@@ -53,7 +53,7 @@ export default function Navbar() {
                     }
                     {user ? 
                         (<button className="deco" onClick={(e) => logout(e)} >Déconnexion</button>) : 
-                        (<button> <Link href="/login">S'identifier</Link></button>)
+                        (<button> <Link href="/login/signup">S'identifier</Link></button>)
                     }
                 </ul>
             </nav>

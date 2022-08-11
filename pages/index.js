@@ -58,7 +58,7 @@ export default function Home({ posts }) {
         body: JSON.stringify({
           content: inputedData.content,
           userId: user?.id,
-          postId: posts,
+          postId: 1
         }), 
     })
     if(response.ok){
@@ -70,11 +70,11 @@ export default function Home({ posts }) {
           color: 'white',
         },
       });
-      router.replace({pathname: router.asPath},undefined, {scroll: false})
+
     }
     const json = await response.json()
     console.log(json)
-    setInputedData({ content:""})
+    setInputedData({ content:"" })
     fetchDataCom()
     // afficher toast de création de commentaire
 }
@@ -123,7 +123,7 @@ export default function Home({ posts }) {
               </button>
             )}
 
-          <form onSubmit={e =>(e.preventDefault(), handleCreateComment(post?.id))}>
+          <form onSubmit={handleCreateComment}>
             <input
                 type="text"
                 name="content"
@@ -137,7 +137,7 @@ export default function Home({ posts }) {
           <h2> Commentaire </h2>
               {post.comments.map((comment) => (
               <div key={comment.id}>
-                <p>{post.user?.username}</p>
+                <p>{user?.username}</p>
                 <p>{comment.content}</p> 
               </div>
             ))}
@@ -165,7 +165,7 @@ export async function getServerSideProps() {
         select: {
           id: true,
           username: true,
-          image: true,
+          content: true,
         }
       },
       comments: {

@@ -45,13 +45,12 @@ export default function Profil(users) {
             </Head>
             <h1>Profil</h1>
 
+            <p>{cookies?.user?.username}</p>
+            <p>{cookies?.user?.localisation}</p>
+            <p>{cookies?.user?.bio}</p>
+
             
-            <p>{user?.username}</p>
-            <p>{user?.email}</p>
-            <p>{user?.bio ? user?.bio : "Aucune bio"}</p>
-            <p>{user?.birthdate ? user.birthdate : "Votre date de naissance "}</p>
-            <p>{user?.location ? user.location : "Votre ville"}</p>
-            {user?.image && <img src={user?.image} alt="profil" />}
+
 
 
             <Link href={`/profil/modify/${user?.username}`}>Modifier le profil</Link>

@@ -4,8 +4,6 @@ import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
 import toast, { Toaster } from 'react-hot-toast';
 
-
-
 export default function Post()  {
 
   const [image , setImage] = useState()
