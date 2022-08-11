@@ -52,7 +52,7 @@ export default function Index() {
             const data = await res.json();
                 if(res.ok){
                     setCookie("user", JSON.stringify(data), {
-                        path: '/',
+                        path: '/signup',
                         maxAge: 1296000, // Expires apres 2 semaines
                         sameSite: true,
                     })
