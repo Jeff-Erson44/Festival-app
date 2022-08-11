@@ -7,7 +7,7 @@ import { parseCookies } from "../../helpers"
 
 
 
-export default function Profil(users) {
+export default function Profil() {
 
     const [cookies, setcookies] = useCookies(["user"])
     const [user, setUser] = useState()
@@ -33,10 +33,6 @@ export default function Profil(users) {
                 sameSite:true,
             })
         }
-        
-    }
-    const handleImg = async (e) => {
-        setImg(e.target.files[0])
     }
     return(
         <>
@@ -45,27 +41,14 @@ export default function Profil(users) {
             </Head>
             <h1>Profil</h1>
 
-            <p>{cookies?.user?.username}</p>
-            <p>{cookies?.user?.localisation}</p>
-            <p>{cookies?.user?.bio}</p>
-
-            
-
-
+            <h2>{user?.email}</h2>
+            <h2>{user?.username}</h2>
+            <h2>{user?.bio}</h2>
+            <h2>{user?.localisation}</h2>
 
             <Link href={`/profil/modify/${user?.username}`}>Modifier le profil</Link>
-
-            <form onSubmit={handleForm}>
-                <input 
-                    type="file" 
-                    accept=".jpg, .jpeg, .png"
-                />
-                <button type="submit" onChange={handleImg}>Envoyer</button>
-            </form>
-
         </>
     )
 }
 
 
-      

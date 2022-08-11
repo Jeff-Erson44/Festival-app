@@ -1,6 +1,6 @@
             
 import Head from 'next/head';
-import { useCookies } from 'react-cookie';
+import { Cookies, useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
 import { PrismaClient } from "@prisma/client";
 import toast, { Toaster } from 'react-hot-toast';
@@ -21,7 +21,6 @@ export default function Home({ posts }) {
       setUser(cookies.user)
   } , [cookies.user])
 
-
   const fetchData = async () => {
   const response = await fetch(`../api/post/getPost`);
   const json = await response.json()
@@ -29,6 +28,7 @@ export default function Home({ posts }) {
   }
 
   const handleCreateComment = async (posts) => {
+    
     const response = await fetch(`/api/comment/createComment`,  {
         method: 'POST',
         headers: {
@@ -123,8 +123,8 @@ export default function Home({ posts }) {
           <h2> Commentaire </h2>
               {post?.comments.map((comment) => (
               <div key={comment?.id}>
-                <p>{user?.username}</p>
-                <p>{comment?.content}</p> 
+                <p>{comment?.userId}</p>
+                <p>{comment?.content}</p>
               </div>
             ))}
             {post?.comments?.length === 0 ? (

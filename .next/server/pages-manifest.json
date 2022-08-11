@@ -2,10 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/login": "pages/login.js",
-  "/api/auth/signin": "pages/api/auth/signin.js",
   "/api/post/getPost": "pages/api/post/getPost.js",
-  "/profil/[pseudo]": "pages/profil/[pseudo].js",
   "/": "pages/index.js",
   "/api/comment/getComment": "pages/api/comment/getComment.js"
 }

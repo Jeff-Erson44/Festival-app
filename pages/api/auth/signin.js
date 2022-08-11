@@ -32,7 +32,7 @@ export default async function handler(
                     createdAt : passwordUser.createdAt,
                     image : passwordUser.image,
                     bio : passwordUser.bio,
-                    localisation : passwordUser.location,
+                    localisation : passwordUser.localisation,
                 })
                 await prisma.$disconnect()
                 console.log('Vous êtes déconnecté');
