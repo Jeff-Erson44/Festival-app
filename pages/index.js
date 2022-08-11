@@ -21,28 +21,6 @@ export default function Home({ posts }) {
       setUser(cookies.user)
   } , [cookies.user])
 
-const handleDeleteData = async (id) => {
-  const response = await fetch(`../api/post/deletePost`, {
-    method: "POST",
-    headers: {
-    "Content-Type": "application/json",
-  },
-    body: JSON.stringify({ id })
-  })
-  const json = await response.json()
-  console.log(json)
-  // toast de suppresion de post
-  toast('Votre post a bien été supprimé',
-    {
-      icon: '🗑️',
-      style: {
-        background: '#234D43',
-        color: 'white',
-      },  
-    });
-    fetchData()
-    router.replace({pathname: router.asPath},undefined, {scroll: false})
-  }
 
   const fetchData = async () => {
   const response = await fetch(`../api/post/getPost`);
@@ -72,6 +50,7 @@ const handleDeleteData = async (id) => {
           color: 'white',
         },
       });
+      router.replace({pathname: router.asPath},undefined, {scroll: false})
 
     }
     const json = await response.json()
@@ -119,11 +98,11 @@ const handleDeleteData = async (id) => {
               alt={post?.description} 
             />
 
-            {user?.id === post?.user?.id && (
-              <button onClick={() => handleDeleteData(post?.id)}>
+            {/*{user?.id === post?.user?.id && (
+              <button onClick={() => handleDeletePost(post?.id)}>
                 Supprimer
               </button>
-            )}
+            )}*/}
 
           <form onSubmit={
             (e) => {

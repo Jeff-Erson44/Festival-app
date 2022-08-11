@@ -7,12 +7,7 @@ import Link from "next/link";
 
 export default function Index() {
     const router = useRouter()
-    // si l'utilisateur est déjà connecté, on le redirige vers la page d'accueil
-    useEffect(() => {
-        if(cookies.user){
-            router.push('/')
-        }
-     });
+
     // Etat du cookie
     const [cookies, setCookie] = useCookies(['user']);
 
@@ -58,7 +53,7 @@ export default function Index() {
                 if(res.ok){
                     setCookie("user", JSON.stringify(data), {
                         path: '/',
-                        maxAge: 1296000, // Expires after 1hr
+                        maxAge: 1296000, // Expires apres 2 semaines
                         sameSite: true,
                     })
                     toast('Compte créé !!',
@@ -71,7 +66,7 @@ export default function Index() {
                     })
                     // mettre un delais avant de recharger la page pour que le toast soit visible
                     setTimeout(() => {
-                    router.push('../login/signin.js')
+                    router.push('../login')
                     } , 2000)
                 }else{
                     console.log('error');
@@ -89,35 +84,34 @@ export default function Index() {
 
 
 
-    return (
-        <>
-            <Toaster />
-            <Head>
-                <title>Festiv&apos;app JK - Inscription</title>
-            </Head>
+return (
+    <>
+        <Toaster />
+        <Head>
+            <title>Festiv&apos;app JK - Inscription</title>
+        </Head>
 
 
-                <h2>Créer un compte</h2>
+        <h2>Créer un compte</h2>
 
-                <form onSubmit={handleSignUp}>
-                    <label> Nom d'utilisateur : </label>
-                    <input type="text" name="username" value={inputUser.username || ''} onChange={(e) => setInputUser({ ...inputUser, username: e.target.value })} />
-                    <label> Email : </label>
-                    <input type="text" name="email" value={inputUser.email || ''} onChange={(e) => setInputUser({ ...inputUser, email: e.target.value })} />
-                    <label> Mot de passe : </label>
-                    <input type="password" name="password" value={inputUser.password || ''} onChange={(e) => setInputUser({ ...inputUser, password: e.target.value })} />
-                    <label> Localisation : </label>
-                    <input type="text" name="localisation" value={inputUser.localisation || ''} onChange={(e) => setInputUser({ ...inputUser, localisation: e.target.value })} />
-                    <label> Biographie : </label>
-                    <textarea name="bio" value={inputUser.bio || ''} onChange={(e) => setInputUser({ ...inputUser, bio: e.target.value })} />
-                    <button type="submit">Créer</button>
-                </form>
-                <h3>Vous avez déja un compte ? <span> 
-                <Link href='../login/signin'>
-                        Connectez-vous ici 
-                    </Link>
-                    </span>
-                </h3>
-
+        <form onSubmit={handleSignUp}>
+            <label> Nom d'utilisateur : </label>
+            <input type="text" name="username" value={inputUser.username || ''} onChange={(e) => setInputUser({ ...inputUser, username: e.target.value })} />
+            <label> Email : </label>
+            <input type="text" name="email" value={inputUser.email || ''} onChange={(e) => setInputUser({ ...inputUser, email: e.target.value })} />
+            <label> Mot de passe : </label>
+            <input type="password" name="password" value={inputUser.password || ''} onChange={(e) => setInputUser({ ...inputUser, password: e.target.value })} />
+            <label> Localisation : </label>
+            <input type="text" name="localisation" value={inputUser.localisation || ''} onChange={(e) => setInputUser({ ...inputUser, localisation: e.target.value })} />
+            <label> Biographie : </label>
+            <textarea name="bio" value={inputUser.bio || ''} onChange={(e) => setInputUser({ ...inputUser, bio: e.target.value })} />
+            <button type="submit">Créer</button>
+        </form>
+        <h3>Vous avez déja un compte ? <span> 
+        <Link href='../login/signin'>
+                Connectez-vous ici 
+            </Link>
+            </span>
+        </h3>
     </>)
 }
