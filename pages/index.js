@@ -21,7 +21,7 @@ export default function Home({ posts }) {
       setUser(cookies.user)
   } , [cookies.user])
 
-/*const handleDeleteData = async (id) => {
+const handleDeleteData = async (id) => {
   const response = await fetch(`../api/post/deletePost`, {
     method: "POST",
     headers: {
@@ -41,7 +41,8 @@ export default function Home({ posts }) {
       },  
     });
     fetchData()
-  }*/
+    router.replace({pathname: router.asPath},undefined, {scroll: false})
+  }
 
   const fetchData = async () => {
   const response = await fetch(`../api/post/getPost`);
@@ -135,7 +136,7 @@ export default function Home({ posts }) {
           </form>
 
           <h2> Commentaire </h2>
-              {post?.comments.map((comment) => (
+              {post.comments.map((comment) => (
               <div key={comment?.id}>
                 <p>{user?.username}</p>
                 <p>{comment?.content}</p> 

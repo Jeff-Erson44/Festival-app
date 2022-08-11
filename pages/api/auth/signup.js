@@ -7,7 +7,7 @@ export default async function( req, res ) {
     if ( req.method === "POST" ) {
         const Prisma = new PrismaClient();
         // On récupère toutes les infos utisateurs
-        const { username, email, password, bio, localisation } = req.body;
+        const { username, email, password} = req.body;
         // Validation des données
         if ( !username || !email.includes('@') || !password  ) {
             res.status( 400 ).send( "Données manquantes" );
@@ -29,8 +29,6 @@ export default async function( req, res ) {
             username,
             email,
             password: await hash( password, 8 ),
-            bio,
-            localisation
         }
     })
     // afficher un toast de succès

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import styled from 'styled-components'
 
+
 const NavbarStyle = styled.div`
     nav {
         background: black;
@@ -24,11 +25,12 @@ export default function Navbar() {
     const [user, setUser] = useState()
     const router = useRouter()
     const [cookies, setCookie, removeCookie] = useCookies(['user']);
+    
 
     const logout = (e) => {
         e.preventDefault()
         removeCookie("user",  {path: '/'})
-        router.push('/login/')
+        router.push('/login/signup')
     }
 
     useEffect (() => {
