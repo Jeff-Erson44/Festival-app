@@ -108,7 +108,7 @@ return (
             <button type="submit">Créer</button>
         </form>
         <h3>Vous avez déja un compte ? <span> 
-        <Link href='../login/signin'>
+        <Link href='../login'>
                 Connectez-vous ici 
             </Link>
             </span>
