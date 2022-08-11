@@ -1,10 +1,80 @@
 import { useRouter } from 'next/router'
 import { useCookies } from 'react-cookie'
 import { useEffect, useState } from 'react';
-import { PrismaClient } from '@prisma/client';
 import toast, { Toaster } from 'react-hot-toast';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
+import styled from 'styled-components';
+
+const SigninStyle = styled.div`
+    @media screen and (max-width: 768px) {
+        .container{
+            .container__image{
+                display: none;
+            }
+            .container__form{
+                padding: 0 20px!important;
+                &--logo{
+                    margin-top: 50px!important;
+                }
+                p{
+                    font-size: 1rem!important;
+                    margin-bottom: 20px;
+                }
+                form{
+                    input, textarea{
+                        margin-bottom: 25px;
+                    }
+                    button{
+                        margin-bottom: 30px!important;
+                    }
+                }
+            }
+        }
+    }
+    .container {
+        display: flex;
+        .container__image{
+            align-content: center;
+        }
+        .container__form{
+            padding: 0 150px;
+            margin: 0 auto;
+            margin-top: 80px;
+            &--logo{
+                display: flex;
+                justify-content: center;
+            }
+            p{
+                text-align: center;
+                margin: 35px 0;
+                font-size: 1.5rem;
+            }
+            form{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            input, textarea{
+                width: 100%;
+                margin-bottom: 45px;
+                padding: 10px 0 10px 20px;
+            }
+            button{
+                display: flex;
+                margin: 20px 0 20px;
+            }
+        }
+        .text-info{
+            font-size: 1rem!important;
+            margin-top: -5px!important;
+            span{
+                font-family: 'Switzer-Semibold';
+            }
+        }
+    }
+`
 
 export default function Signin() {
 
@@ -70,26 +140,56 @@ export default function Signin() {
 
     return(
         <>
+        <SigninStyle>
         <Toaster />
             <Head>
                 <title>Signin</title>   
             </Head>
-            <h1>Signin</h1>
-
-            <h2>Connexion</h2>
+            <div className="container">
+                <div className="container__image">
+                    <Image
+                        src="/login/signin.webp"
+                        alt="photo illustration festival page de connexion"
+                        width={694}
+                        height={905}
+                    />
+                </div>
+            <div className="container__form">
+                <div className="container__form--logo">
+                    <Image
+                        src="/logo.webp"
+                        alt="logo de l'application"
+                        width={125}
+                        height={157}
+                    />
+                </div>
+                <p>Connectez-vous avec votre nom d’utilisateur et votre mot de passe !</p>
                 <form onSubmit={handleSignIn}>
-                    <label> Nom d'utilisateur : </label>
-                    <input type="text" name="username" value={inputedUser.username || ''} onChange={(e) => setInputedUser({ ...inputUser, username: e.target.value })} />
-                    <label> Mot de passe : </label>
-                    <input type="password" name="password" value={inputedUser.password || ''} onChange={(e) => setInputedUser({ ...inputedUser, password: e.target.value })} />
+                    <input 
+                        type="text" 
+                        name="username"
+                        placeholder="Nom d'utilisateur"
+                        value={inputedUser.username || ''} onChange={(e) => setInputedUser({ ...inputUser, username: e.target.value })} 
+                    />
+                    <input 
+                        type="password" 
+                        name="password"
+                        placeholder="Mot de passe"
+                        value={inputedUser.password || ''} 
+                        onChange={(e) => setInputedUser({ ...inputedUser, password: e.target.value })} 
+                    />
                     <button>Connexion</button>
                 </form>
-                <h3>Vouas n'avez pas de compte ? <span> 
-                    <Link href='../login/signup'>
-                        Inscrivez-vous ici 
-                    </Link>
-                    </span>
-                </h3>
+                    <p className="text-info">Vous n'avez pas de compte ?&nbsp;
+                        <span> 
+                            <Link href='../login/signup'>
+                                Inscrivez-vous ici 
+                            </Link>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            </SigninStyle>
         </>
     )
 }

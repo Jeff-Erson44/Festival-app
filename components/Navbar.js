@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 
 const NavbarStyle = styled.div`
+
     nav {
         background: black;
         color: white;
