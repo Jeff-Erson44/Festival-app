@@ -12,6 +12,10 @@ const SignupStyle = styled.div`
     overflow:hidden ;
     @media screen and (max-width: 768px) {
         .container{
+            height: 100%!important;
+            img{
+                display: none!important; 
+            }
             .container__image{
                 display: none;
             }
@@ -19,6 +23,9 @@ const SignupStyle = styled.div`
                 padding: 0 20px!important;
                 &--logo{
                     margin-top: 40px;
+                    img{
+                        display: block!important;
+                    }
                 }
                 p{
                     font-size: 1rem!important;

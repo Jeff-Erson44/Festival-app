@@ -12,13 +12,16 @@ const SigninStyle = styled.div`
     overflow:hidden ;
     @media screen and (max-width: 768px) {
         .container{
-            .container__image{
-                display: none;
+            img{
+                display: none!important; 
             }
             .container__form{
                 padding: 0 20px!important;
                 &--logo{
                     margin-top: 35px!important;
+                    img{
+                        display: block!important;
+                    }
                 }
                 p{
                     font-size: 1rem!important;
