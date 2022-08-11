@@ -49,7 +49,7 @@ export default function Home({ posts }) {
   setDatas(json)
   }
 
-  const handleCreateComment = async (posts) => {
+  const handleCreateComment = async () => {
     const response = await fetch(`/api/comment/createComment`,  {
         method: 'POST',
         headers: {
@@ -128,20 +128,20 @@ export default function Home({ posts }) {
                 type="text"
                 name="content"
                 placeholder="Votre commentaire"
-                value={inputedData.content || ""}
+                value={inputedData?.content || ""}
                 onChange={(e)=> setInputedData({...inputedData, content: e.target.value})}
             />
             <button>Envoyer</button>
           </form>
 
           <h2> Commentaire </h2>
-              {post.comments.map((comment) => (
-              <div key={comment.id}>
+              {post?.comments.map((comment) => (
+              <div key={comment?.id}>
                 <p>{user?.username}</p>
-                <p>{comment.content}</p> 
+                <p>{comment?.content}</p> 
               </div>
             ))}
-            {post.comments.length === 0 ? (
+            {post?.comments?.length === 0 ? (
               <p>Aucun commentaire</p>
             ) : (
               ""
