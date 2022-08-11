@@ -35,8 +35,11 @@ const SignupStyle = styled.div`
     }
     .container {
         display: flex;
+        height: 96vh;
+        width: 100%;
         .container__image{
             align-content: center;
+            width: 40%;
         }
         .container__form{
             padding: 0 150px;
@@ -158,14 +161,12 @@ return (
         </Head>
 
         <div className="container">
-            <div className="container__image">
                 <Image
                     src="/login/signup.webp"
                     alt="photo illustration festival page de création de compte"
-                    width={694}
-                    height={1042}
+                    height={1024}
+                    width={720}
                 />
-            </div>
             <div className="container__form">
                 <div className="container__form--logo">
                     <Image

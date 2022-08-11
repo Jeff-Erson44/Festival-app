@@ -8,6 +8,8 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 const SigninStyle = styled.div`
+    width: 100%;
+    overflow:hidden ;
     @media screen and (max-width: 768px) {
         .container{
             .container__image{
@@ -16,7 +18,7 @@ const SigninStyle = styled.div`
             .container__form{
                 padding: 0 20px!important;
                 &--logo{
-                    margin-top: 50px!important;
+                    margin-top: 35px!important;
                 }
                 p{
                     font-size: 1rem!important;
@@ -35,8 +37,11 @@ const SigninStyle = styled.div`
     }
     .container {
         display: flex;
+        height: 96vh;
+        width: 100%;
         .container__image{
             align-content: center;
+            width: 40%;
         }
         .container__form{
             padding: 0 150px;
@@ -146,14 +151,13 @@ export default function Signin() {
                 <title>Signin</title>   
             </Head>
             <div className="container">
-                <div className="container__image">
-                    <Image
+                <Image
                         src="/login/signin.webp"
-                        alt="photo illustration festival page de connexion"
+                        alt="logo de l'application"
+                        height={1024}
                         width={694}
-                        height={905}
+
                     />
-                </div>
             <div className="container__form">
                 <div className="container__form--logo">
                     <Image
