@@ -15,6 +15,8 @@ const DashboardStyle = styled.aside`
         z-index: 1;
         &__profil, &__navigation{
             border-radius: 20px;
+            border: 2px solid #FEAC5E;
+            box-shadow: 2px 2px 16px 1px rgba(0, 0, 0, 0.25);
             padding: 20px 40px;
             background: #F7F7F7;
         }
