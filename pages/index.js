@@ -103,7 +103,7 @@ export default function Home({ posts }) {
           <h2>{post?.description}</h2>
           <h3>{post?.nameFestival}</h3>
           <p>{post?.user?.username}</p>
-         
+
             <Image
               src={post?.content}
               width={400}
