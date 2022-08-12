@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { PrismaClient } from "@prisma/client"
 import { parseCookies } from "../../helpers"
+import Dashboard from "../../components/Dashboard"
 
 
 
@@ -39,6 +40,7 @@ export default function Profil() {
             <Head>
                 <title>Festiv&apos;app - JK profil</title>
             </Head>
+            <Dashboard/>
             <h1>Profil</h1>
 
             <h2>{user?.email}</h2>

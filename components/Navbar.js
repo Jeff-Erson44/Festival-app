@@ -6,7 +6,6 @@ import styled from 'styled-components'
 
 
 const NavbarStyle = styled.div`
-
     nav {
         background: black;
         color: white;
@@ -51,7 +50,7 @@ export default function Navbar() {
                         ("") 
                     }
                     {user ? 
-                        (<li><Link href="/profil/${user.username}">Mon profil</Link></li>) : 
+                        (<li><Link href={`/profil/${user.username}`}>Mon profil</Link></li>) : 
                         ("")
                     }
                     {user ? 
