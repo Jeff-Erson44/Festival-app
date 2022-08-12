@@ -41,14 +41,7 @@ export default function Profil() {
                 <title>Festiv&apos;app - JK profil</title>
             </Head>
             <Dashboard/>
-            <h1>Profil</h1>
 
-            <h2>{user?.email}</h2>
-            <h2>{user?.username}</h2>
-            <h2>{user?.bio}</h2>
-            <h2>{user?.localisation}</h2>
-
-            <Link href={`/profil/modify/${user?.username}`}>Modifier le profil</Link>
         </>
     )
 }

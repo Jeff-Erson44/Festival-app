@@ -6,6 +6,52 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 
+const DashboardStyle = styled.aside`
+    .container{
+        margin: 0;
+        width: 30vw;
+        margin-left: 50px;
+        &__profil, &__navigation{
+            border-radius: 20px;
+            padding: 20px 40px;
+            background: #F7F7F7;
+        }
+        &__profil{
+            margin-bottom: 70px;
+            h2{
+                font-size: 1.75rem;
+                text-align: center;
+            }
+            &--info{
+                display: flex;
+                .profil{
+                    width: 70%;
+                    p{
+                        font-family: 'Switzer-SemiBold';
+                        font-size: 1.25rem;
+                        &:last-child{
+                            font-size: 0.96rem;
+                            font-family:'Switzer-Regular';
+                            line-height: 19.8px;
+                        }
+                    }
+                }
+            }
+        }
+        &__navigation{
+            &--item{
+                display: flex;
+                margin-bottom: 30px;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                p{
+                    margin-left: 15px;
+                }
+            }
+        }
+    }
+`
 export default function Dashboard() {
     const router = useRouter()
     const [user, setUser] = useState()
@@ -16,6 +62,7 @@ export default function Dashboard() {
 
     return(
         <>
+        <DashboardStyle>
             <div className='container'>
                 <div className='container__profil'>
                     <h2>Mon profil</h2>
@@ -27,7 +74,12 @@ export default function Dashboard() {
                             <p>{user?.bio}</p>
                         </div>
                         <div className='photo'>
-                            <Image src="/default-pdp.png" width={125} height={125} />
+                            <Image src="/default-pdp.png" width={125} height={125} 
+                            />
+                            <Link href={`/profil/modify/${user?.username}`}>
+                                <Image src="/icone/edit.svg" width={30} height={30} 
+                                />
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -64,9 +116,9 @@ export default function Dashboard() {
                             <p>Voir mon profil</p>
                         </Link>
                     </div>
-
                 </div>
             </div>
+        </DashboardStyle>
         </>
     )
 }

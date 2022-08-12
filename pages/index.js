@@ -7,6 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Dashboard from '../components/Dashboard';
 
 export default function Home({ posts }) {
   const router = useRouter();
@@ -93,6 +94,7 @@ export default function Home({ posts }) {
       <Head>
         <title>Festiv'app JK</title>
       </Head>
+      <Dashboard/>
       
       <h1>Festival</h1>
       <p>Test final : TS </p>
