@@ -60,7 +60,7 @@ export default function Dashboard() {
                                 width={30}
                                 height={30}
                             />
-                        <Link href={`/profil/${user.username}`}>
+                        <Link href={`/profil/${user?.username}`}>
                             <p>Voir mon profil</p>
                         </Link>
                     </div>
