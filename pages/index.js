@@ -97,9 +97,6 @@ export default function Home({ posts }) {
       <Dashboard/>
       
       <h1>Festival</h1>
-      <p>Test final : TS </p>
-
-      <h2>Bonjour {user?.username}</h2>
 
       {posts?.map((post) => (
         <div key={post?.id}>

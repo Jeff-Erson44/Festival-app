@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 const DashboardStyle = styled.aside`
     .container{
         margin: 0;
-        width: 30vw;
+        width: 450px;
         margin-left: 50px;
         &__profil, &__navigation{
             border-radius: 20px;
@@ -60,8 +60,8 @@ export default function Dashboard() {
         setUser(cookies.user)
     } , [cookies.user])
 
-    return(
-        <>
+return(
+    <>
         <DashboardStyle>
             <div className='container'>
                 <div className='container__profil'>
@@ -119,6 +119,5 @@ export default function Dashboard() {
                 </div>
             </div>
         </DashboardStyle>
-        </>
-    )
+    </>)
 }
