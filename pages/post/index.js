@@ -3,6 +3,43 @@ import Head from 'next/head'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
 import toast, { Toaster } from 'react-hot-toast';
+import Image from 'next/image';
+import styled from 'styled-components'
+
+const PostStyled = styled.div`
+  .container{
+    &--logo{
+      display: flex;
+      justify-content: center;
+      margin: 80px 0;
+    }
+    form{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      input{
+        width: 100%;
+        margin-bottom: 50px;
+        padding: 10px 10px 10px 35px;
+      }
+    }
+  }
+  @media (max-width: 768px){
+    .container{
+      padding: 0 20px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1024px){
+    .container{
+      padding: 0 200px;
+    }
+  }
+  @media (min-width: 1025px){
+    .container{
+      padding: 0 500px;
+    }
+  }
+`
 
 export default function Post()  {
 
@@ -78,6 +115,7 @@ export default function Post()  {
 
   return (
     <>
+    <PostStyled>
     <Toaster
       position="top-right"
       reverseOrder={false}
@@ -86,16 +124,16 @@ export default function Post()  {
             <title>Festiv&apos;app JK - Nouveau post </title>
         </Head>
 
-        <h1>Listing Post</h1>
-
-        <div>
-            <form onSubmit={handleCreatePost}>
-                <input 
-                  value={inputedData.description} 
-                  type="text" 
-                  placeholder='description' 
-                  onChange={(e)=> setInputedData({...inputedData, description: e.target.value})} 
+        <div className='container'>
+            <div className='container--logo'>
+              <Image
+                    src="/logo.webp"
+                    alt="logo de l'application"
+                    width={125}
+                    height={157}
                 />
+            </div>
+            <form onSubmit={handleCreatePost}>
                 <input 
                   type="file" 
                   placeholder='Content' 
@@ -107,9 +145,16 @@ export default function Post()  {
                   placeholder='Nom du Festival' 
                   onChange={(e)=> setInputedData({...inputedData, nameFestival: e.target.value})}
                 />
-                <button type="submit">Publier</button>
+                <input 
+                  value={inputedData.description} 
+                  type="text" 
+                  placeholder='description' 
+                  onChange={(e)=> setInputedData({...inputedData, description: e.target.value})} 
+                />
+                <button type="submit">Créer un post</button>
             </form>
         </div>
+        </PostStyled>
     </>)
 }
 

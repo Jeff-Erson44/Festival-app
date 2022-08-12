@@ -171,7 +171,7 @@ return (
 
         <div className="container">
                 <Image
-                    src="/login/signup.webp"
+                    src="/image/signup.webp"
                     alt="photo illustration festival page de création de compte"
                     height={1024}
                     width={720}

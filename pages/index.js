@@ -26,6 +26,20 @@ export default function Home({ posts }) {
   const json = await response.json()
   setDatas(json)
   }
+  const handleDeletePost= async (id) => {
+
+    const response = await fetch(`api/post/deletePost`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id })
+    })
+    const json = await response.json()
+    console.log(json)
+
+    router.replace({pathname: router.asPath},undefined, {scroll: false})
+  }
 
   const handleCreateComment = async (posts) => {
     
@@ -98,11 +112,11 @@ export default function Home({ posts }) {
               alt={post?.description} 
             />
 
-            {/*{user?.id === post?.user?.id && (
+            {user?.id === post?.user?.id && (
               <button onClick={() => handleDeletePost(post?.id)}>
                 Supprimer
               </button>
-            )}*/}
+            )}
 
           <form onSubmit={
             (e) => {
@@ -141,6 +155,7 @@ export default function Home({ posts }) {
 export async function getServerSideProps() {
   const prisma = new PrismaClient();
   const posts = await prisma.post.findMany({
+    orderBy: { createdAt: 'desc' },
     select: {
       id: true,
       createdAt: true,
