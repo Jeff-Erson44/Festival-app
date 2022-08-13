@@ -9,8 +9,8 @@
 *.user
 *.userosscache
 *.sln.docstates
-*.env
-.env
+*.env.local
+.env.local
 
 .env.ignore
 
@@ -352,3 +352,12 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+.env
