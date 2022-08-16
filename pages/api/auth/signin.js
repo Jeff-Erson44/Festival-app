@@ -30,7 +30,6 @@ export default async function handler(
                     email : passwordUser.email,
                     id : passwordUser.id,
                     createdAt : passwordUser.createdAt,
-                    image : passwordUser.image,
                     bio : passwordUser.bio,
                     localisation : passwordUser.localisation,
                     content: passwordUser.content,

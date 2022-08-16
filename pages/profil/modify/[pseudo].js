@@ -16,24 +16,27 @@ export default function Profil() {
     } , [cookies.user])
     const [Img , setImg] = useState()
 
-    const handleForm = async (e) => {
-        e.preventDefault()
-        const Data = new FormData()
-        Data.append("image", Img)
-        const res = await fetch(`/api/profil/${cookies?.user?.username}`, {
-            method: "POST",
-            body: Data,
+    const handleUpdateData = async () => {
+        const response = await fetch(`/api/auth/updateProfil`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: inputedData.id,
+            username: inputedData.username,
+            email: inputedData.email,
+            password: inputedData.password,
+            bio: inputedData.bio,
+            localisation: inputedData.localisation,
+          }),
         })
-        const data = await res.json()
-        if (res.ok) {
-            setUser(data)
-            setcookies('user',JSON.stringify(json),{
-                path:'/',
-                maxAge:1296000,
-                sameSite:true,
-            })
-        }
-    }
+        const json = await response.json()
+        console.log(json)
+        setInputedData({ id:"", description:"", content:""})
+        setEditMode(false)
+        fetchData()
+      }
     return(
         <>
             <Head>
@@ -41,6 +44,35 @@ export default function Profil() {
             </Head>
             <Dashboard/>
 
+
+        <form onSubmit={handleCreateData}>
+          <input 
+                value={inputedData.username} 
+                type="text" 
+                placeholder='username' 
+                onChange={(e)=> setInputedData({...inputedData, username: e.target.value})} 
+            />
+          <input 
+                value={inputedData.email} 
+                type="text" 
+                placeholder='email' 
+                onChange={(e)=> setInputedData({...inputedData, email: e.target.value})} 
+            />
+          <input 
+                value={inputedData.bio} 
+                type="text" 
+                placeholder='bio' 
+                onChange={(e)=> setInputedData({...inputedData, bio: e.target.value})} 
+            />
+          <input 
+                value={inputedData.localisation} 
+                type="text" 
+                placeholder='localisation' 
+                onChange={(e)=> setInputedData({...inputedData, localisation: e.target.value})} 
+            />
+         
+          <button type="submit">Submit</button>
+        </form>
         </>
     )
 }

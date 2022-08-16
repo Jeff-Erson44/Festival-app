@@ -7,6 +7,7 @@ import Dashboard from "../../components/Dashboard"
 import Image from "next/image"
 import ProfilUser from "../../components/ProfilUser"
 
+
 const StatusStyle = styled.div`
 @media(min-width: 768px){
     display: none;

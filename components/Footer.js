@@ -17,7 +17,7 @@ const NavStyle = styled.footer`
         color: white;
         display: flex;
         justify-content: space-around;
-        padding: 20px 0;
+        padding: 10px 0;
         width: 100%;
     }
 `
@@ -34,22 +34,22 @@ export default function NavMobile(){
                 <Link href={'/'}>
                     <Image
                         src={'/icone/house-white.svg'}
-                        width={30}
-                        height={30}
+                        width={25}
+                        height={25}
                     />
                 </Link>
                 <Link href={'/post'}>
                     <Image
                         src={'/icone/plus-white.svg'}
-                        width={30}
-                        height={30}
+                        width={25}
+                        height={25}
                     />
                 </Link>
                 <Link href={`/profil/${user?.username}`}>
                     <Image
                         src={'/icone/user-white.svg'}
-                        width={30}
-                        height={30}
+                        width={25}
+                        height={25}
                     />
                 </Link>
             </div>
