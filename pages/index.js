@@ -15,9 +15,9 @@ const PostStyle = styled.div`
     display: flex;
     justify-content: center;
   .container{
-    margin-left: 120px;
+    margin-left: 250px;
     margin-top: 100px;
-    width: 45%!important;
+    width: 50%!important;
     .container--logo{
       display: none;
     }
