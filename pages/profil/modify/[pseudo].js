@@ -4,7 +4,14 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { PrismaClient } from "@prisma/client"
 import Dashboard from "../../../components/Dashboard"
+import styled from "styled-components"
 
+const UpdateStyle = styled.div`
+    form{
+        margin-left: 150px;
+    }
+
+`
 
 
 export default function Profil() {
@@ -14,7 +21,14 @@ export default function Profil() {
     useEffect(() => {
         setUser(cookies.user)
     } , [cookies.user])
-    const [Img , setImg] = useState()
+    const [inputedData, setInputedData] = useState({
+        id: "",
+        username: "",
+        email: "",
+        password: "",
+        localisation: "",
+        bio: "",
+      })
 
     const handleUpdateData = async () => {
         const response = await fetch(`/api/auth/updateProfil`, {
@@ -33,19 +47,20 @@ export default function Profil() {
         })
         const json = await response.json()
         console.log(json)
-        setInputedData({ id:"", description:"", content:""})
+        setInputedData({ id:"", username: "", email: "", password: "", localisation: "", bio: "" })
         setEditMode(false)
         fetchData()
       }
     return(
         <>
+        <UpdateStyle>
             <Head>
                 <title>Festiv&apos;app - JK profil</title>
             </Head>
-            <Dashboard/>
+{/*            <Dashboard/>*/}
 
 
-        <form>
+        <form onClick={handleUpdateData}>
           <input 
                 value={inputedData.username} 
                 type="text" 
@@ -70,9 +85,16 @@ export default function Profil() {
                 placeholder='localisation' 
                 onChange={(e)=> setInputedData({...inputedData, localisation: e.target.value})} 
             />
+          <input 
+                value={inputedData.password} 
+                type="text" 
+                placeholder='password' 
+                onChange={(e)=> setInputedData({...inputedData, password: e.target.value})} 
+            />
          
-          <button type="submit">Submit</button>
+          <button type="submit">Modifier</button>
         </form>
+        </UpdateStyle>
         </>
     )
 }
