@@ -3,7 +3,6 @@ import { useCookies } from "react-cookie"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { PrismaClient } from "@prisma/client"
-import { parseCookies } from "../../helpers"
 import Dashboard from "../../components/Dashboard"
 
 

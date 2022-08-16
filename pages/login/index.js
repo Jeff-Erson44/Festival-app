@@ -143,6 +143,14 @@ export default function Signin() {
             } , 3000)
         }else{
             console.log('error');
+            toast('Erreur de connexion, nom d\'utilisateur ou mot de passe incorrect',
+                {
+                    icon: '❌',
+                    style: {
+                    background: '#FF5C5C',
+                    color: 'white',
+                    },
+                })
         }
     }
 

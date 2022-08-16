@@ -10,9 +10,10 @@ export function uploadImage(imageUploaded) {
         // on appelle la méthode de téléchargement Cloudinary Uploader
         cloudinary.uploader.upload(
             imageUploaded,
-            {   width: 450,
-                height: 550,
-                crop: 'fill',
+            {   width: 500,
+                height: 400,
+                crop: 'lfill',
+                aspect_ratio: '1.0',
             },
             (err, res) => {
                 if (err) reject (err);

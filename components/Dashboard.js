@@ -7,21 +7,24 @@ import { useEffect, useState } from 'react'
 
 
 const DashboardStyle = styled.aside`
+@media (max-width: 768px) {
+    display: none;
+}
     .container{
         margin: 0;
         width: 450px;
-        margin-left: 50px;
+        margin-left: 15px;
+        margin-top: 100px;
         position: fixed;
         z-index: 1;
         &__profil, &__navigation{
             border-radius: 20px;
-            border: 2px solid #FEAC5E;
             box-shadow: 2px 2px 16px 1px rgba(0, 0, 0, 0.25);
             padding: 20px 40px;
             background: #F7F7F7;
+            margin-bottom: 25px;
         }
         &__profil{
-            margin-bottom: 70px;
             h2{
                 font-size: 1.75rem;
                 text-align: center;
@@ -45,7 +48,7 @@ const DashboardStyle = styled.aside`
         &__navigation{
             &--item{
                 display: flex;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
                 &:last-child{
                     margin-bottom: 0;
                 }
@@ -55,6 +58,27 @@ const DashboardStyle = styled.aside`
             }
         }
     }
+    @media (min-width: 768px) and (max-width: 1025px) {
+    .container{
+        width: 350px!important;
+        margin-left: 30px;
+        &__profil, &__navigation{
+            padding: 15px 30px;
+        }
+        &__profil{
+            h2{
+                font-size: 1.3rem;
+            }
+            &--info{
+                .profil{
+                    p{
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
 `
 export default function Dashboard() {
     const router = useRouter()
@@ -89,35 +113,59 @@ return(
                 </div>
                 <div className='container__navigation'>
                     <div className='container__navigation--item'>
-                            <Image
-                                src="/icone/plus-square.svg"
-                                width={30}
-                                height={30}
-                            />
+                        <Image
+                            src="/icone/plus-square.svg"
+                            width={30}
+                            height={30}
+                        />
                         <Link href="/post">
                             <p>Ajouter un post</p>
                         </Link>
                     </div>
 
                     <div className='container__navigation--item'>
-                            <Image
-                                src="/icone/globe.svg"
-                                width={30}
-                                height={30}
-                            />
+                        <Image
+                            src="/icone/globe.svg"
+                            width={30}
+                            height={30}
+                        />
                         <Link href="/">
                             <p>Rejoindre un space</p>
                         </Link>
                     </div>
 
                     <div className='container__navigation--item'>
-                            <Image
-                                src="/icone/user.svg"
-                                width={30}
-                                height={30}
-                            />
+                        <Image
+                            src="/icone/user.svg"
+                            width={30}
+                            height={30}
+                        />
                         <Link href={`/profil/${user?.username}`}>
                             <p>Voir mon profil</p>
+                        </Link>
+                    </div>
+                </div>
+
+                <div className='container__navigation'>
+                    <div className='container__navigation--item'>
+                        <Image
+                            src="/icone/settings.svg"
+                            width={30}
+                            height={30}
+                        />
+                        <Link href="/">
+                            <p>Paramètres</p>
+                        </Link>
+                    </div>
+
+                    <div className='container__navigation--item'>
+                        <Image
+                            src="/icone/user-x.svg"
+                            width={30}
+                            height={30}
+                        />
+                        <Link href={`/profil/${user?.username}`}>
+                            <p>Déconnexion</p>
                         </Link>
                     </div>
                 </div>

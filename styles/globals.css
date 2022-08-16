@@ -30,7 +30,7 @@ a {
 
 * {
   box-sizing: border-box;
-  
+  cursor: default;
 }
 @font-face {
   font-family: 'Switzer';

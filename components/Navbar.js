@@ -3,14 +3,15 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import styled from 'styled-components'
+import Image from 'next/image'
 
 
 const NavbarStyle = styled.div`
+@media(max-width:768px){
+    display: none;
+}
     nav {
-        background: black;
-        color: white;
-        display: flex;
-        height: 4vh;
+        position: fixed;
         ul{
             display: flex;
             align-items: center;
@@ -43,20 +44,15 @@ export default function Navbar() {
             <nav>
                 <ul>
                     <li>
-                        <Link href="/">Accueil</Link>
+                        <Link href="/">
+                            <Image
+                                src="/logonav.svg"
+                                alt="logo de l'application"
+                                width={210}
+                                height={70}
+                            />
+                        </Link>
                     </li>
-                    {user ? 
-                        (<li><Link href="/post">Créer un post</Link></li>) : 
-                        ("") 
-                    }
-                    {user ? 
-                        (<li><Link href={`/profil/${user?.username}`}>Mon profil</Link></li>) : 
-                        ("")
-                    }
-                    {user ? 
-                        (<button className="deco" onClick={(e) => logout(e)} >Déconnexion</button>) : 
-                        (<button> <Link href="/login/signup">S'identifier</Link></button>)
-                    }
                 </ul>
             </nav>
         </NavbarStyle>
