@@ -45,7 +45,7 @@ export default function Profil() {
             <Dashboard/>
 
 
-        <form onSubmit={handleCreateData}>
+        <form>
           <input 
                 value={inputedData.username} 
                 type="text" 
