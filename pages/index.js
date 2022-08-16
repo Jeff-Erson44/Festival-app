@@ -111,6 +111,18 @@ const PostStyle = styled.div`
       }
     }
   }
+  @media(min-width: 769px) and (max-width: 1025px){
+    .container{
+      margin-left: 280px!important;
+      width: 50%!important;
+      &__post{
+        width: 110%;
+        &--comment{
+          width: 65%;
+        }
+      }
+    }
+  }
 `
 
 export default function Home({ posts }) {
@@ -143,8 +155,17 @@ export default function Home({ posts }) {
     const json = await response.json()
     console.log(json)
 
+    // toast de confirmation
+    toast.success('Post supprimé', {
+        icon: '🗑️',
+        style: {
+        background: '#234D43',
+        color: 'white',
+      },
+    });
     router.replace({pathname: router.asPath},undefined, {scroll: false})
   }
+
 
   const handleCreateComment = async (posts) => {
     

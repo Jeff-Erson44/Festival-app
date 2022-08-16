@@ -30,6 +30,16 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/post": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/post.js"
+    ],
+    "/profil/[pseudo]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/profil/[pseudo].js"
+    ],
     "/profil/modify/[pseudo]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

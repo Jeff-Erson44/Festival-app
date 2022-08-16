@@ -33,6 +33,7 @@ const PostStyled = styled.div`
   @media (min-width: 768px) and (max-width: 1024px){
     .container{
       padding: 0 200px;
+
     }
   }
   @media (min-width: 1025px){
@@ -107,6 +108,16 @@ export default function Post()  {
     setTimeout(() => {
       router.push('/')
     } , 2000)
+  }else{
+    toast('Voous devez etre connecté remplir tous les champs pour créer un post',
+      {
+        icon: '🚨',
+        style: {
+          background: '#234D43',
+          color: 'white',
+        },
+      }
+    );
   }
 
   }

@@ -10,7 +10,6 @@ const UpdateStyle = styled.div`
     form{
         margin-left: 150px;
     }
-
 `
 
 

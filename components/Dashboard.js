@@ -22,7 +22,7 @@ const DashboardStyle = styled.aside`
             box-shadow: 2px 2px 16px 1px rgba(0, 0, 0, 0.25);
             padding: 20px 40px;
             background: #F7F7F7;
-            margin-bottom: 25px;
+            margin-bottom: 50px;
         }
         &__profil{
             h2{
@@ -42,6 +42,11 @@ const DashboardStyle = styled.aside`
                             line-height: 19.8px;
                         }
                     }
+                }
+                .photo {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-end;
                 }
             }
         }
@@ -64,6 +69,7 @@ const DashboardStyle = styled.aside`
         margin-left: 30px;
         &__profil, &__navigation{
             padding: 15px 30px;
+            margin-bottom: 30px;
         }
         &__profil{
             h2{
@@ -75,6 +81,18 @@ const DashboardStyle = styled.aside`
                         font-size: 1rem;
                     }
                 }
+                .photo{
+                    width: 25%;
+                    height: 25%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-end;
+                }
+            }
+        }
+        &__navigation{
+            &--item{
+                margin-bottom: 0;
             }
         }
     }
