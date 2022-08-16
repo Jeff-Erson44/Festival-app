@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useCookies } from 'react-cookie'
+import { useCookies, removeCookie } from 'react-cookie'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -83,7 +83,7 @@ const DashboardStyle = styled.aside`
 export default function Dashboard() {
     const router = useRouter()
     const [user, setUser] = useState()
-    const [cookies, setCookie] = useCookies(['user']);
+    const [cookies, setCookie, removeCookie] = useCookies(['user']);
     useEffect(() => {
         setUser(cookies.user)
     } , [cookies.user])
@@ -91,7 +91,7 @@ export default function Dashboard() {
     const logout = (e) => {
         e.preventDefault()
         removeCookie("user",  {path: '/'})
-        router.push('/login/signup')
+        router.push('/')
     }
 
 return(
@@ -166,13 +166,11 @@ return(
 
                     <div className='container__navigation--item'>
                         <Image
-                            src="/icone/user-x.svg"
+                            src="/icone/log-out.svg"
                             width={30}
                             height={30}
                         />
-                        <Link href={`/profil/${user?.username}`}>
                             <p onClick={logout}>Déconnexion</p>
-                        </Link>
                     </div>
                 </div>
             </div>

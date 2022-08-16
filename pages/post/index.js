@@ -27,6 +27,7 @@ const PostStyled = styled.div`
   @media (max-width: 768px){
     .container{
       padding: 0 20px;
+      margin-bottom: 150px
     }
   }
   @media (min-width: 768px) and (max-width: 1024px){

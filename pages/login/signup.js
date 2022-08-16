@@ -44,7 +44,7 @@ const SignupStyle = styled.div`
     }
     .container {
         display: flex;
-        height: 96vh;
+        height: 100vh;
         width: 100%;
         .container__image{
             align-content: center;

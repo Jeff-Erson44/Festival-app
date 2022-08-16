@@ -92,12 +92,13 @@ const PostStyle = styled.div`
   }
   @media(max-width:768px){
     .container{
-      margin-left: 0;
       width: 100%!important;
       padding: 0 20px;
+      margin: 50px 0 120px;
       .container--logo{
         text-align: center;
-        margin: 25px 0;
+        margin: 15px 0;
+        display: block;
       }
       &__post{
         flex-wrap: wrap;
@@ -276,7 +277,8 @@ export default function Home({ posts }) {
                     ""
                   )}
                 </div>
-                <div className='post--comment-formulaire'>
+                {user ? (
+                  <div className='post--comment-formulaire'>
                   <form onSubmit={
                   (e) => {
                     e.preventDefault(),
@@ -296,6 +298,7 @@ export default function Home({ posts }) {
                     </div>
                 </form>
               </div>
+                ) : ('')}
             </div>
           </div>
         </div>
