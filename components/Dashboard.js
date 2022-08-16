@@ -63,7 +63,7 @@ const DashboardStyle = styled.aside`
             }
         }
     }
-    @media (min-width: 768px) and (max-width: 1225px) {
+    @media (min-width: 768px) and (max-width: 1025px) {
     .container{
         width: 350px!important;
         margin-left: 30px;
