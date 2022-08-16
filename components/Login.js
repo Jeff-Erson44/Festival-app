@@ -10,7 +10,7 @@ const LoginStyle= styled.aside`
 }
         .container{
         margin: 0;
-        width: 450px;
+        width: 430px;
         margin: 100px 0 0 15px;
         position: fixed;
         z-index: 1;

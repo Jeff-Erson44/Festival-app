@@ -63,7 +63,7 @@ const DashboardStyle = styled.aside`
             }
         }
     }
-    @media (min-width: 768px) and (max-width: 1025px) {
+    @media (min-width: 768px) and (max-width: 1225px) {
     .container{
         width: 350px!important;
         margin-left: 30px;
@@ -72,6 +72,7 @@ const DashboardStyle = styled.aside`
             margin-bottom: 30px;
         }
         &__profil{
+            margin-bottom: 0;
             h2{
                 font-size: 1.3rem;
             }
