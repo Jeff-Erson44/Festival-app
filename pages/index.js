@@ -113,7 +113,7 @@ const PostStyle = styled.div`
   }
   @media(min-width: 769px) and (max-width: 1025px){
     .container{
-      margin-left: 280px!important;
+      margin-left: 300px!important;
       width: 50%!important;
       &__post{
         width: 110%;
@@ -258,7 +258,7 @@ export default function Home({ posts }) {
             </div>
             <Image
               src={post?.content}
-              width={500}
+              width={450}
               height={450}
               alt={post?.description}
             />

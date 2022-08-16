@@ -1,11 +1,5 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/profil/[pseudo]": "pages/profil/[pseudo].js",
-  "/profil/modify/[pseudo]": "pages/profil/modify/[pseudo].js",
-  "/": "pages/index.js",
-  "/post": "pages/post.js",
-  "/api/comment/getComment": "pages/api/comment/getComment.js",
-  "/api/post/getPost": "pages/api/post/getPost.js"
+  "/_document": "pages/_document.js"
 }
