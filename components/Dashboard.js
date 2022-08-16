@@ -88,6 +88,12 @@ export default function Dashboard() {
         setUser(cookies.user)
     } , [cookies.user])
 
+    const logout = (e) => {
+        e.preventDefault()
+        removeCookie("user",  {path: '/'})
+        router.push('/login/signup')
+    }
+
 return(
     <>
         <DashboardStyle>
@@ -165,7 +171,7 @@ return(
                             height={30}
                         />
                         <Link href={`/profil/${user?.username}`}>
-                            <p>Déconnexion</p>
+                            <p onClick={logout}>Déconnexion</p>
                         </Link>
                     </div>
                 </div>

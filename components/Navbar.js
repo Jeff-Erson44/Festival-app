@@ -28,11 +28,7 @@ export default function Navbar() {
     const [cookies, setCookie, removeCookie] = useCookies(['user']);
     
 
-    const logout = (e) => {
-        e.preventDefault()
-        removeCookie("user",  {path: '/'})
-        router.push('/login/signup')
-    }
+
 
     useEffect (() => {
         setUser(cookies.user)
