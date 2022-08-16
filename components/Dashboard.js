@@ -69,7 +69,7 @@ const DashboardStyle = styled.aside`
         margin-left: 30px;
         &__profil, &__navigation{
             padding: 15px 30px;
-            margin-bottom: 30px;
+            margin-bottom: 0!important;
         }
         &__profil{
             margin-bottom: 0;
