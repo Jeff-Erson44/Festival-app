@@ -90,10 +90,28 @@ export default class MyDocument extends Document {
           `,
             }}
           />
+
         </Head>
 
         <body>
 
+
+        <script
+            dangerouslySetInnerHTML={{
+              __html: `     
+                  window.axeptioSettings = {
+                    clientId: "62fc18d1949a09b2787c019d",
+                    cookiesVersion: "https://festivap-jk.fr",
+                  };
+                  
+                  (function(d, s) {
+                    var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+                    e.async = true; e.src = "//static.axept.io/sdk.js";
+                    t.parentNode.insertBefore(e, t);
+                  })(document, "script");
+              `,
+                }}
+              />
           <script
             async src="https://www.googletagmanager.com/ns.html?id=GTM-TWQHJFJ"
           />
