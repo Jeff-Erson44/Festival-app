@@ -178,7 +178,7 @@ return(
                             width={30}
                             height={30}
                         />
-                        <Link href="/">
+                        <Link href="/parametre">
                             <p>Paramètres</p>
                         </Link>
                     </div>
@@ -189,7 +189,7 @@ return(
                             width={30}
                             height={30}
                         />
-                            <p onClick={logout}>Déconnexion</p>
+                        <p onClick={logout}>Déconnexion</p>
                     </div>
                 </div>
             </div>

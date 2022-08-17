@@ -166,7 +166,7 @@ return (
         <SignupStyle>
         <Toaster />
         <Head>
-            <title>Festiv&apos;app JK - Inscription</title>
+        <title>Festival&apos;app JK | S'inscrire </title>
         </Head>
 
         <div className="container">

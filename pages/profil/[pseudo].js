@@ -65,7 +65,7 @@ export default function Profil() {
     return(
         <>
             <Head>
-                <title>Festiv&apos;app - JK profil</title>
+                <title>Festiv&apos;app JK | {user?.username}</title>
             </Head>
             <Dashboard/>
             {user ? (

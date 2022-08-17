@@ -35,8 +35,14 @@ const PostStyle = styled.div`
         align-content: space-around;
         margin-left: 20px;
         .post--comment-list{
-          p:first-of-type{
+          p{
             font-family: 'Switzer-SemiBold';
+          }
+          .post-description, .comment-content{
+            font-family: 'Switzer-Regular';
+          }
+          .post-description{
+            margin-bottom: 40px;
           }
         }
         .post--comment-formulaire{
@@ -85,6 +91,7 @@ const PostStyle = styled.div`
           }
           p:last-of-type{
             font-family: 'Switzer-Regular';
+            margin-top: -10px;
           }
         }
       }
@@ -218,7 +225,7 @@ export default function Home({ posts }) {
         reverseOrder={false}
       />
       <Head>
-        <title>Festiv'app JK</title>
+        <title>Festiv'app JK | Feed</title>
       </Head>
 
       {user ? ( <Dashboard/> ) : ( <Login/> )}
@@ -249,7 +256,7 @@ export default function Home({ posts }) {
               </div>
               <div className='highlight'>
                 <p>
-                  <Link href={`/profil/${user?.username}`}>
+                  <Link href={`/profil/${post?.user?.username}`}>
                     {post?.user?.username}
                   </Link>
                   </p>
@@ -286,10 +293,12 @@ export default function Home({ posts }) {
             </div>
             <div className='container__post--comment'>
               <div className='post--comment-list'>
+                <p>Description post</p>
+                <p className='post-description'>{post.description}</p>
                     {post?.comments.map((comment) => (
                     <div key={comment?.id}>
                       <p>{comment?.user?.username}</p>
-                      <p>{comment?.content}</p>
+                      <p className='comment-content'>{comment?.content}</p>
                     </div>
                   ))}
                   {post?.comments?.length === 0 ? (

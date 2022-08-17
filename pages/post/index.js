@@ -133,7 +133,7 @@ export default function Post()  {
       reverseOrder={false}
     />
         <Head>
-            <title>Festiv&apos;app JK - Nouveau post </title>
+            <title>Festiv&apos;app JK | Nouveau post </title>
         </Head>
 
         <div className='container'>

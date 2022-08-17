@@ -159,7 +159,7 @@ export default function Signin() {
         <SigninStyle>
         <Toaster />
             <Head>
-                <title>Signin</title>   
+                <title>Festival&apos;app JK | Se connecter</title>   
             </Head>
             <div className="container">
                 <Image
