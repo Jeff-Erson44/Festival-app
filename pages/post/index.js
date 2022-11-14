@@ -41,6 +41,7 @@ const PostStyled = styled.div`
       padding: 0 500px;
     }
   }
+  /** Gkejkhisozef */
 `
 
 export default function Post()  {
