@@ -22,7 +22,7 @@ const DashboardStyle = styled.aside`
             box-shadow: 2px 2px 16px 1px rgba(0, 0, 0, 0.25);
             padding: 20px 40px;
             background: #F7F7F7;
-            margin-bottom: 50px;
+            margin-bottom: 20px;
         }
         &__profil{
             h2{

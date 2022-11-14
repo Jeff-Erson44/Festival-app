@@ -58,7 +58,7 @@ const SignupStyle = styled.div`
             }
             p{
                 text-align: center;
-                margin: 35px 0;
+                margin: 10px 0;
                 font-size: 1.5rem;
             }
             form{
